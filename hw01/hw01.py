@@ -10,9 +10,9 @@ def a_plus_abs_b(a, b):
     5
     """
     if b < 0:
-        f = _____
+        f = sub
     else:
-        f = _____
+        f = add
     return f(a, b)
 
 
@@ -40,7 +40,7 @@ def two_of_three(x, y, z):
     >>> two_of_three(5, 5, 5)
     50
     """
-    return _____
+    return [i * i + j * j for i, j in sorted(x, y, z)[:2]][0]
 
 
 def two_of_three_syntax_check():
@@ -64,13 +64,16 @@ def largest_factor(n):
     >>> largest_factor(13) # factor is 1 since 13 is prime
     1
     """
-    "*** YOUR CODE HERE ***"
+    import math
+    for i in range(n // 2, 0, -1):
+        if n % i == 0:
+            return i
 
 
 def limited(x, z, limit):
     """Logic that is common to invert and change."""
     if x != 0:
-        return min(z, limit)
+        return min(z(), limit)
     else:
         return limit
 
@@ -90,7 +93,7 @@ def invert_short(x, limit):
     >>> invert_short(x, 100)  # No error, even though 1/x divides by 0!
     100
     """
-    return limited(x, 1 / x, limit)
+    return limited(x, lambda: 1 / x, limit)
 
 
 def change_short(x, y, limit):
@@ -108,7 +111,7 @@ def change_short(x, y, limit):
     >>> change_short(x, y, 100)  # No error, even though abs(y - x) / x divides by 0!
     100
     """
-    return limited(x, abs(y - x) / x, limit)
+    return limited(x, lambda: abs(y - x) / x, limit)
 
 
 def invert_and_change_syntax_check():
@@ -139,11 +142,25 @@ def hailstone(n):
     >>> a
     7
     """
-    "*** YOUR CODE HERE ***"
+    length = 1
+    print(n)
+    while True:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = 3 * n + 1
+        length += 1
+        print(n)
+        if n == 1:
+            return length
 
 
 "*** YOUR CODE HERE ***"
-quine = ''
+class foo:
+    def __str__(self):
+        return 'print(foo(), end="")'
+
+quine = 'print(foo(), end="")'
 
 
 def quine_test():
