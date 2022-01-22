@@ -40,7 +40,7 @@ def two_of_three(x, y, z):
     >>> two_of_three(5, 5, 5)
     50
     """
-    return [i * i + j * j for i, j in sorted(x, y, z)[:2]][0]
+    return x ** 2 + y ** 2 + z ** 2 - max(x, y, z) ** 2
 
 
 def two_of_three_syntax_check():
@@ -64,7 +64,6 @@ def largest_factor(n):
     >>> largest_factor(13) # factor is 1 since 13 is prime
     1
     """
-    import math
     for i in range(n // 2, 0, -1):
         if n % i == 0:
             return i
@@ -143,15 +142,15 @@ def hailstone(n):
     7
     """
     length = 1
-    print(n)
     while True:
+        print(n)
         if n % 2 == 0:
             n = n // 2
         else:
             n = 3 * n + 1
         length += 1
-        print(n)
         if n == 1:
+            print(n)
             return length
 
 
